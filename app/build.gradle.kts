@@ -65,13 +65,16 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    // Firebase - Update to use consistent versions
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))  // Updated version
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
+    // Play Services - Update version to match Firebase
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.android.gms:play-services-base:18.3.0")
 
     // Networking
     implementation(libs.retrofit)
