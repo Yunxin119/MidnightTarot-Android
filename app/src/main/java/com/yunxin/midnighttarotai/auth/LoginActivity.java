@@ -31,9 +31,6 @@ import com.google.firebase.FirebaseTooManyRequestsException;
 /**
  * LoginActivity handles user authentication and login functionality
  * This activity manages user login through Firebase Authentication and stores user data in Firestore
- *
- * @author Yunxin
- * @version 2.0
  */
 public class LoginActivity extends AppCompatActivity {
 
