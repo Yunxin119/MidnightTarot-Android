@@ -27,6 +27,9 @@ import com.yunxin.midnighttarotai.home.MainActivity;
 import com.yunxin.midnighttarotai.R;
 import com.yunxin.midnighttarotai.payment.DailyReadingManager;
 import com.yunxin.midnighttarotai.payment.PaymentManager;
+import com.yunxin.midnighttarotai.savedreadings.FirebaseReadingManager;
+import com.yunxin.midnighttarotai.savedreadings.Reading;
+import com.yunxin.midnighttarotai.savedreadings.SavedCard;
 import com.yunxin.midnighttarotai.utils.CardImageLoaderUtils;
 //import com.yunxin.midnighttarotai.reading.FirebaseReadingManager;
 //import com.yunxin.midnighttarotai.reading.Reading;
@@ -36,6 +39,7 @@ import com.yunxin.midnighttarotai.settings.SettingsManager;
 import com.yunxin.midnighttarotai.utils.FadeEdgeImageView;
 import com.yunxin.midnighttarotai.utils.OpenAIHelper;
 import com.yunxin.midnighttarotai.utils.ResultAnimationUtils;
+import com.yunxin.midnighttarotai.utils.SaveReadingUtils;
 //import com.yunxin.midnighttarotai.utils.ShareImageGenerator;
 
 import java.util.ArrayList;
@@ -83,7 +87,7 @@ public class ResultActivity extends AppCompatActivity {
     private SettingsManager settingsManager; // Manages app settings
     private DailyReadingManager dailyReadingManager; // Manages daily reading limits
     private PaymentManager paymentManager; // Manages in-app purchases and credits
-//    private FirebaseReadingManager readingManager; // Manages reading data in Firebase
+    private FirebaseReadingManager readingManager; // Manages reading data in Firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +110,7 @@ public class ResultActivity extends AppCompatActivity {
         dailyReadingManager = new DailyReadingManager(this);
         paymentManager = new PaymentManager(this);
         settingsManager = new SettingsManager(this);
-//        readingManager = new FirebaseReadingManager();
+        readingManager = new FirebaseReadingManager();
         viewModel = new ViewModelProvider(this).get(ResultViewModel.class);
     }
 
@@ -473,22 +477,21 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * Handles the "Save" button click, saving or deleting the reading.
      */
     private void handleSaveClick() {
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if (currentUser == null) {
-//            showToast("Please sign in to save readings");
-//            return;
-//        }
-//
-//        if (!isReadingSaved) {
-//            saveReading(currentUser);
-//        } else {
-//            deleteReading(currentUser);
-//        }
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            showToast("Please sign in to save readings");
+            return;
+        }
+
+        if (!isReadingSaved) {
+            saveReading(currentUser);
+        } else {
+            deleteReading(currentUser);
+        }
     }
 
     /**
@@ -497,28 +500,28 @@ public class ResultActivity extends AppCompatActivity {
      * @param user The current user.
      */
     private void saveReading(FirebaseUser user) {
-//        Reading reading = new Reading();
-//        reading.setUserId(user.getUid());
-//        reading.setSpreadType(spreadType);
-//        reading.setQuestion(userQuestion);
-//        reading.setInterpretation(viewModel.getCompleteInterpretation());
-//
-//        List<SavedCard> savedCards = new ArrayList<>();
-//        for (String cardInfo : selectedCards) {
-//            SavedCard card = ReadingUtils.parseCardInfo(cardInfo);
-//            savedCards.add(card);
-//        }
-//        reading.setCards(savedCards);
-//
-//        currentReadingId = reading.getId();
-//
-//        readingManager.saveReading(reading)
-//                .addOnSuccessListener(aVoid -> {
-//                    isReadingSaved = true;
-//                    updateSaveButton();
-//                    showToast("Reading saved");
-//                })
-//                .addOnFailureListener(e -> showToast("Failed to save reading"));
+        Reading reading = new Reading();
+        reading.setUserId(user.getUid());
+        reading.setSpreadType(spreadType);
+        reading.setQuestion(userQuestion);
+        reading.setInterpretation(viewModel.getCompleteInterpretation());
+
+        List<SavedCard> savedCards = new ArrayList<>();
+        for (String cardInfo : selectedCards) {
+            SavedCard card = SaveReadingUtils.parseCardInfo(cardInfo);
+            savedCards.add(card);
+        }
+        reading.setCards(savedCards);
+
+        currentReadingId = reading.getId();
+
+        readingManager.saveReading(reading)
+                .addOnSuccessListener(aVoid -> {
+                    isReadingSaved = true;
+                    updateSaveButton();
+                    showToast("Reading saved");
+                })
+                .addOnFailureListener(e -> showToast("Failed to save reading"));
     }
 
     /**
@@ -527,14 +530,14 @@ public class ResultActivity extends AppCompatActivity {
      * @param user The current user.
      */
     private void deleteReading(FirebaseUser user) {
-//        readingManager.deleteReading(user.getUid(), currentReadingId)
-//                .addOnSuccessListener(aVoid -> {
-//                    isReadingSaved = false;
-//                    currentReadingId = null;
-//                    updateSaveButton();
-//                    showToast("Reading removed");
-//                })
-//                .addOnFailureListener(e -> showToast("Failed to remove reading"));
+        readingManager.deleteUserSingleReading(user.getUid(), currentReadingId)
+                .addOnSuccessListener(aVoid -> {
+                    isReadingSaved = false;
+                    currentReadingId = null;
+                    updateSaveButton();
+                    showToast("Reading removed");
+                })
+                .addOnFailureListener(e -> showToast("Failed to remove reading"));
     }
 
     /**

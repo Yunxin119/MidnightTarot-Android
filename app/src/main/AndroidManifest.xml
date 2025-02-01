@@ -30,6 +30,12 @@
         android:theme="@style/Theme.MidnightTarotAI"
         tools:targetApi="31">
         <activity
+            android:name=".savedreadings.SavedReadingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".savedreadings.SavedReadingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".settings.SettingsActivity"
             android:exported="false" />
         <activity
