@@ -96,7 +96,7 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
 
             mSpreadType = getSpreadType(intent);
             mQuestion = getQuestion(intent);
-            mPickCardLimit = intent.getIntExtra("pickcard", 3);
+            mPickCardLimit = intent.getIntExtra("pick", 3);
 
             logInitialization();
             return true;
@@ -156,11 +156,11 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
      */
     private int getLayoutResource(String layoutType) {
         switch (layoutType) {
-            case "OneCard":
+            case "One Card":
                 return R.layout.layout_one_card;
             case "Hexagram":
                 return R.layout.layout_hexagram;
-            case "TwoOptions":
+            case "Two Options":
                 return R.layout.layout_two_options;
             case "Horseshoe":
                 return R.layout.layout_horseshoe;
@@ -181,7 +181,7 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
     private void initializeCardSlots() {
         int i = 1;
         while (true) {
-            String slotId = "slot_card_" + i;
+            String slotId = "card" + i;
             int resId = getResources().getIdentifier(slotId, "id", getPackageName());
 
             if (resId == 0) break;
@@ -208,10 +208,15 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
      */
     private void setupProceedButton() {
         mBtnProceed = findViewById(R.id.myButton);
+        if (mBtnProceed == null) {
+            Log.e(TAG, "Failed to find proceed button");
+            return;
+        }
+
+        Log.d(TAG, "Successfully initialized proceed button");
         mBtnProceed.setVisibility(View.GONE);
         mBtnProceed.setOnClickListener(v -> navigateToResult());
     }
-
     @Override
     public void onCardSelected(Card selectedCard) {
         try {
@@ -232,11 +237,16 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
         currentSlot.setImageBitmap(selectedCard.getImage());
         mCardMap.put(currentSlot, selectedCard);
 
+        Log.d(TAG, "Handling card selection: " + (mSelectedSlotIndex + 1) +
+                " of " + mPickCardLimit);
+
         selectedCard.flipWithAnimation(currentSlot, () -> {
             addSelectedCard(selectedCard);
             mSelectedSlotIndex++;
+            Log.d(TAG, "Card animation completed, new index: " + mSelectedSlotIndex);
 
             if (isSelectionComplete()) {
+                Log.d(TAG, "Selection complete, showing proceed button");
                 showProceedButton();
             }
         });
@@ -257,26 +267,34 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
      * Checks if all required cards have been selected
      */
     private boolean isSelectionComplete() {
-        return mSelectedSlotIndex == mCardSlots.size();
+        boolean complete = mSelectedSlotIndex == mPickCardLimit;
+        Log.d(TAG, "Selection complete check: " + complete +
+                " (selected: " + mSelectedSlotIndex +
+                ", limit: " + mPickCardLimit + ")");
+        return complete;
     }
 
     /**
      * Shows the proceed button with animation
      */
     private void showProceedButton() {
+        if (mBtnProceed == null) {
+            Log.e(TAG, "Cannot show null proceed button");
+            return;
+        }
+
         mBtnProceed.setAlpha(1f);
         mBtnProceed.setScaleX(1f);
         mBtnProceed.setScaleY(0f);
-
         mBtnProceed.animate()
                 .scaleY(1f)
                 .setDuration(300)
-                .withStartAction(() -> mBtnProceed.setVisibility(View.VISIBLE))
+                .withStartAction(() -> {
+                    mBtnProceed.setVisibility(View.VISIBLE);
+                })
                 .start();
-
         mBtnProceed.bringToFront();
     }
-
     /**
      * Navigates to the result screen with selected cards
      */
