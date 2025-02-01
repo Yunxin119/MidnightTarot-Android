@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#1A1A24</color>
+    <color name="white">#F2F2F7</color>
+
+    <color name="background">#1E1E2A</color>
+    <color name="surface">#2A2A3D</color>
+
+    <color name="bg_soft_start">#662A2A3D</color>
+    <color name="bg_soft_center">#1E1E2A</color>
+    <color name="bg_soft_end">#33251E35</color>
+
+    <color name="bg_tutorial">#DE1E1E2A</color>
+
+    <color name="bg_trans_start">#332A2A3D</color>
+    <color name="bg_trans_end">#331E1E2A</color>
+
+    <color name="primary">#B89F6B</color>
+    <color name="secondary">#856AD4</color>
+
+    <color name="text_primary">#F0F0F7</color>
+    <color name="text_secondary">#B3B3C6</color>
+    <color name="text_accent">#D4BC8A</color>
+
+    <color name="accent">#9D6AD4</color>
+    <color name="transprimary">#33B89F6B</color>
+
+    <color name="tarot_button_start">#C4AD7C</color>
+    <color name="tarot_button_center">#B89F6B</color>
+    <color name="tarot_button_end">#AA935F</color>
+    <color name="tarot_button_border">#8F7B4D</color>
+    <color name="tarot_button_text">#F7F2E8</color>
+</resources>

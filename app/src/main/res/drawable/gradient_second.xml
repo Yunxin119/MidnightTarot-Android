@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 基础渐变背景 -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:angle="135"
+                android:startColor="@color/bg_soft_start"
+                android:centerColor="@color/bg_soft_center"
+                android:endColor="@color/bg_soft_end" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="400dp"
+                android:startColor="@color/bg_trans_start"
+                android:endColor="@color/bg_trans_end"
+                />
+        </shape>
+    </item>
+</layer-list>

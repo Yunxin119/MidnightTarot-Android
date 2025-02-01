@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="black">#2C2C35</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <!--    Background things   -->
+    <color name="background">#F3E6D1</color>
+    <color name="surface">#D4C8BE</color>
+
+    <color name="bg_soft_start">#D9A9B0C4</color>
+    <color name="bg_soft_center">#D9F3E6D1</color>
+    <color name="bg_soft_end">#66E0B3B2</color>
+
+    <color name="bg_tutorial">#661E1E2A</color>
+
+    <color name="bg_trans_start">#33A9B0C4</color>
+    <color name="bg_trans_end">#00F3E6D1</color>
+
+    <!--    Theme Colors    -->
+    <color name="primary">#A9B0C4</color>
+    <color name="secondary">#E0B3B2</color>
+
+    <!--    Text Colors     -->
+    <color name="text_primary">#2C2C35</color>
+    <color name="text_secondary">#6B6B78</color>
+    <color name="text_accent">#B3945F</color>
+
+    <color name="accent">#E87676</color>
+    <color name="transprimary">#33C4AA6A</color>
+
+    <color name="tarot_button_start">#E0B3B2</color>
+    <color name="tarot_button_center">#D4C8BE</color>
+    <color name="tarot_button_end">#A9B0C4</color>
+    <color name="tarot_button_border">#6B6B78</color>
+    <color name="tarot_button_text">#2C2C35</color>
+
+    <color name="black_overlay">#66000000</color></resources>

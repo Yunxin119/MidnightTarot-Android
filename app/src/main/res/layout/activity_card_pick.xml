@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_second">
+
+    <include
+        android:id="@+id/spreadContainer"
+        layout="@layout/spread_timeline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintDimensionRatio="W,1.5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/myButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:backgroundTint="@null"
+        android:id="@+id/myButton"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:text="Analyze"
+        android:fontFamily="@font/arizonia"
+        android:textSize="30sp"
+        android:textColor="@color/tarot_button_text"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/text_secondary"
+        android:background="@drawable/button_read"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spreadContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <com.yunxin.midnighttarotai.cardpicking.CardPickView
+        android:id="@+id/cardPickView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

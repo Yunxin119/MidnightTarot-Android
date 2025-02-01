@@ -7,7 +7,7 @@ if (localPropertiesFile.exists()) {
     localPropertiesFile.inputStream().use { localProperties.load(it) }
 }
 
-// Retrieve the API key and Base URL from local.properties
+// Retrieve the API key from local.properties
 val apiKey: String = localProperties.getProperty("OPENAI_API_KEY") ?: "default-api-key"
 
 plugins {
@@ -50,13 +50,15 @@ android {
     }
 }
 
-
 dependencies {
     // Existing dependencies defined using the libs catalog
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.annotation)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
 
     // Testing dependencies
     testImplementation(libs.junit)
@@ -70,7 +72,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
-
 
     // Networking
     implementation(libs.retrofit)
@@ -86,9 +87,9 @@ dependencies {
     // Volley
     implementation("com.android.volley:volley:1.2.0")
 
+    // Material Design
     implementation("com.google.android.material:material:1.9.0")
 
     // Billing
     implementation("com.android.billingclient:billing:6.1.0")
-
 }

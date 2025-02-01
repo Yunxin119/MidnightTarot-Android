@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/transprimary">
+    <item>
+        <layer-list>
+            <item
+                android:left="5dp"
+                android:right="5dp"
+                android:top="5dp"
+                android:bottom="5dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="25dp"/>
+                    <gradient
+                        android:type="radial"
+                        android:gradientRadius="30dp"
+                        android:startColor="@color/bg_soft_start"
+                        android:centerColor="@color/bg_soft_start"
+                        android:endColor="@color/bg_soft_start"/>
+                </shape>
+            </item>
+            <!-- 点击效果 -->
+            <item android:state_pressed="true">
+                <shape android:shape="rectangle">
+                    <corners android:radius="30dp"/>
+                    <solid android:color="@color/bg_soft_start"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</ripple>

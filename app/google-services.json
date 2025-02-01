@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049851279166",
+    "project_id": "midnighttarot-19d2a",
+    "storage_bucket": "midnighttarot-19d2a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049851279166:android:1e8bf5d43dae23f54b9e6f",
+        "android_client_info": {
+          "package_name": "com.yunxin.midnighttarotai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiKT22nS8fbWv2HWQdtKZ4UenWQDqWhL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

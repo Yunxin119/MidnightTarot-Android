@@ -1,5 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MidnightTarotAI</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- App Name -->
+    <string name="app_name">Midnight Tarot AI</string>
+
+    <!-- Common Actions -->
+    <string name="action_proceed">Continue</string>
+    <string name="action_back">Back</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_confirm">Confirm</string>
+
+    <!-- Card Names Format -->
+    <string name="card_name_format">%1$s%2$s</string>
+    <string name="card_reversed_suffix">-reversed</string>
+    <string name="card_position_format">Position %1$d: %2$s</string>
+
+    <!-- Spread Types -->
+    <string name="spread_one_card">Single Card</string>
+    <string name="spread_hexagram">Hexagram</string>
+    <string name="spread_two_options">Two Paths</string>
+    <string name="spread_horseshoe">Horseshoe</string>
+    <string name="spread_cross">Celtic Cross</string>
+    <string name="spread_timeline">Timeline</string>
+    <string name="spread_companion">Spirit Guide</string>
+
+    <!-- Tutorial Messages -->
+    <string name="tutorial_meditation">Close your eyes and breathe deeply...\n\nFeel the ancient wisdom surrounding you\n\nLet your question arise from your heart\'s depths</string>
+    <string name="tutorial_swipe">The cards are calling to you...\n\nLet your intuition guide your hand\n\nGently scroll and draw your destiny</string>
+    <string name="tutorial_select">Trust your inner voice\n\nClick to choose the card that speaks to your soul</string>
+    <string name="tutorial_got_it">Got it</string>
+    <string name="tutorial_skip">Skip Tutorial</string>
+
+    <!-- Error Messages -->
+    <string name="error_intent_data">Failed to get reading information</string>
+    <string name="error_initialization">Unable to start reading</string>
+    <string name="error_invalid_spread">Invalid spread type</string>
+    <string name="error_no_question">No question provided</string>
+    <string name="error_card_selection">Unable to select card</string>
+    <string name="error_image_load">Failed to load card image</string>
+    <string name="error_animation">Animation error</string>
+    <string name="error_navigation">Unable to proceed to next screen</string>
+    <string name="error_retry">Please try again</string>
+
+    <!-- Default Values -->
+    <string name="default_question">General guidance</string>
+    <string name="default_spread">Timeline</string>
+
+    <!-- Card Position Descriptions -->
+    <string name="position_past">Past Influence</string>
+    <string name="position_present">Present Situation</string>
+    <string name="position_future">Future Outcome</string>
+    <string name="position_above">Above (Conscious)</string>
+    <string name="position_below">Below (Subconscious)</string>
+    <string name="position_advice">Guidance</string>
+    <string name="position_influence">External Influence</string>
+    <string name="position_hopes">Hopes and Fears</string>
+    <string name="position_outcome">Final Outcome</string>
+
+    <!-- Accessibility -->
+    <string name="accessibility_card_front">Card front showing %1$s</string>
+    <string name="accessibility_card_back">Card back</string>
+    <string name="accessibility_card_slot">Card position %1$d</string>
+    <string name="accessibility_card_select">Select this card</string>
+    <string name="accessibility_proceed">Proceed to reading</string>
+
+    <!-- Dialog Messages -->
+    <string name="dialog_exit_title">Exit Reading?</string>
+    <string name="dialog_exit_message">Your progress will be lost</string>
+    <string name="dialog_confirm_cards">Are you satisfied with your selection?</string>
+    <string name="dialog_loading_cards">Preparing your reading…</string>
+
+    <!-- Settings -->
+    <string name="settings_show_tutorial">Show Tutorial</string>
+    <string name="settings_dark_mode">Dark Mode</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_sound">Sound Effects</string>
+    <string name="settings_vibration">Vibration</string>
+    <string name="settings_language">Language</string>
+
+    <!-- Animation Descriptions -->
+    <string name="animation_card_flip">Card flipping</string>
+    <string name="animation_card_shuffle">Shuffling cards</string>
+    <string name="animation_card_spread">Spreading cards</string>
+
+    <!-- Tooltips -->
+    <string name="tooltip_tap_card">Tap to select</string>
+    <string name="tooltip_swipe_cards">Swipe to browse</string>
+    <string name="tooltip_view_meaning">Tap for meaning</string>
+    <string name="tooltip_share_reading">Share reading</string>
+
+    <!-- Button Labels -->
+    <string name="button_start_reading">Begin Reading</string>
+    <string name="button_new_reading">New Reading</string>
+    <string name="button_share">Share</string>
+    <string name="button_save">Save</string>
+    <string name="button_help">Help</string>
 </resources>
