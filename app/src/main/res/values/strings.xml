@@ -23,6 +23,9 @@
     <string name="spread_timeline">Timeline</string>
     <string name="spread_companion">Spirit Guide</string>
 
+    <!--  Card Pick  -->
+    <string name="card_pick_proceed">Analyze</string>
+
     <!-- Tutorial Messages -->
     <string name="tutorial_meditation">Close your eyes and breathe deeply...\n\nFeel the ancient wisdom surrounding you\n\nLet your question arise from your heart\'s depths</string>
     <string name="tutorial_swipe">The cards are calling to you...\n\nLet your intuition guide your hand\n\nGently scroll and draw your destiny</string>

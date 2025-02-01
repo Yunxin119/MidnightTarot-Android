@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_main"
-    tools:context=".auth.LoginActivity">
+    tools:context=".auth.RegisterActivity">
 
     <!-- Decorative circle at the top -->
     <ImageView
-        android:id="@+id/iv_login_decoration"
+        android:id="@+id/iv_register_decoration"
         android:layout_width="330dp"
         android:layout_height="330dp"
         android:layout_alignParentTop="true"
@@ -19,17 +19,17 @@
         app:tint="@color/primary"
         android:alpha="0.4" />
 
-    <!-- Login header text -->
+    <!-- Register header text -->
     <TextView
-        android:id="@+id/tv_login_header"
+        android:id="@+id/tv_register_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="25dp"
         android:fontFamily="@font/arizonia"
         android:gravity="center"
-        android:text="Login"
+        android:text="Register"
         android:textColor="@color/primary"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -38,30 +38,49 @@
         android:shadowDy="2"
         android:shadowRadius="4" />
 
-    <!-- Email input field -->
+    <!-- Username input field -->
     <EditText
-        android:id="@+id/et_login_email"
+        android:id="@+id/et_register_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_login_header"
+        android:layout_below="@+id/tv_register_header"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/textarea"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="15dp"
         android:drawableTint="@color/primary"
+        android:hint="Username"
+        android:padding="20dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"
+        android:elevation="4dp" />
+
+    <!-- Email input field -->
+    <EditText
+        android:id="@+id/et_register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_register_username"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/textarea"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="15dp"
+        android:drawableTint="@color/primary"
         android:hint="Email"
-        android:padding="15dp"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
         android:textColor="@color/text_primary"
         android:textColorHint="@color/text_secondary"
         android:elevation="4dp" />
 
     <!-- Password input field -->
     <EditText
-        android:id="@+id/et_login_password"
+        android:id="@+id/et_register_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_login_email"
+        android:layout_below="@+id/et_register_email"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/textarea"
@@ -70,32 +89,17 @@
         android:drawableTint="@color/primary"
         android:hint="Password"
         android:inputType="textPassword"
-        android:padding="15dp"
+        android:padding="20dp"
         android:textColor="@color/text_primary"
         android:textColorHint="@color/text_secondary"
         android:elevation="4dp" />
 
-    <!-- Forgot password button -->
-    <Button
-        android:id="@+id/btn_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/et_login_password"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="Forgot Password?"
-        android:textColor="@color/text_accent"
-        android:fontFamily="@font/lora" />
-
-    <!-- Login button -->
+    <!-- Register button -->
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login_submit"
+        android:id="@+id/btn_register_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_forgot_password"
+        android:layout_below="@id/et_register_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textAllCaps="false"
@@ -105,27 +109,27 @@
         android:paddingTop="10dp"
         android:paddingEnd="30dp"
         android:paddingBottom="10dp"
-        android:text="Login"
+        android:text="Register"
         android:textColor="@color/tarot_button_text"
         android:textSize="28sp"
         android:elevation="8dp" />
 
-    <!-- Register link button -->
+    <!-- Login link button -->
     <Button
-        android:id="@+id/btn_goto_register"
+        android:id="@+id/btn_goto_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login_submit"
+        android:layout_below="@+id/btn_register_submit"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
-        android:text="Don't have an account? Sign up"
+        android:text="Already have an account?"
         android:textColor="@color/text_accent"
         android:fontFamily="@font/lora" />
 
     <!-- Home navigation button -->
     <Button
-        android:id="@+id/btn_login_home"
+        android:id="@+id/btn_register_home"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
