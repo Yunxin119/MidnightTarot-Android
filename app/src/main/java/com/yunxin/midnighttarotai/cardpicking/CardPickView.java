@@ -115,7 +115,7 @@ public class CardPickView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mCenterX = w / 2f;
-        mCenterY = h + mFanRadius * 0.7f;
+        mCenterY = h + mFanRadius * 0.65f;
     }
 
     @Override
@@ -168,7 +168,7 @@ public class CardPickView extends View {
         canvas.translate(centerX, centerY);
         canvas.rotate(angle + mCardRotations[index]);
 
-        float baseScale = 0.88f;
+        float baseScale = DEFAULT_HOVER_SCALE;
         canvas.scale(baseScale, baseScale);
 
         float cardWidth = bitmap.getWidth();
