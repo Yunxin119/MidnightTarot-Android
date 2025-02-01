@@ -26,6 +26,8 @@ import com.yunxin.midnighttarotai.auth.ChangePasswordActivity;
 import com.yunxin.midnighttarotai.auth.LoginActivity;
 import com.yunxin.midnighttarotai.home.MainActivity;
 import com.yunxin.midnighttarotai.R;
+import com.yunxin.midnighttarotai.payment.PaymentBottomSheetDialog;
+import com.yunxin.midnighttarotai.payment.PaymentManager;
 //import com.yunxin.midnighttarotai.reading.SavedReadingsActivity;
 
 /**
@@ -51,6 +53,10 @@ public class UserProfileActivity extends AppCompatActivity {
     // Data
     private SharedPreferences preferences;
     private String userId;
+
+    // Payment
+    private PaymentManager paymentManager;
+    private PaymentBottomSheetDialog paymentBottomSheetDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,7 @@ public class UserProfileActivity extends AppCompatActivity {
         creditsCard = findViewById(R.id.credits_card);
         savedReadingsCard = findViewById(R.id.saved_readings_card);
         profileImage.bringToFront();
+        paymentManager = new PaymentManager(this);
     }
 
     /**
@@ -102,7 +109,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         updateUI(name, email);
         loadProfileImage();
-        setupCardsContent();
+        setupCardsContent(userId);
     }
 
     /**
@@ -161,9 +168,29 @@ public class UserProfileActivity extends AppCompatActivity {
     /**
      * Sets up credits and saved readings cards
      */
-    private void setupCardsContent() {
-        updateCreditsDisplay("0", "Get more readings");
+    private void setupCardsContent(String userId) {
+        setupCreditsCard(userId);
         setupSavedReadingsCard();
+    }
+
+    private void setupCreditsCard(String userId) {
+        // Set click listener
+        creditsCard.setOnClickListener(v -> showPaymentBottomDialog(userId));
+
+        // Update credits display
+        if (paymentManager.hasLifetimeAccess(userId)) {
+            updateCreditsDisplay("∞", "Unlimited Reading Forever");
+        } else if (paymentManager.hasActiveSubscription(userId)) {
+            String expireAt = paymentManager.getExpirationDate(userId);
+            if (expireAt != null) {
+                updateCreditsDisplay("∞", "Subscription expires: " + expireAt);
+            } else {
+                updateCreditsDisplay("∞", "Active Subscription");
+            }
+        } else {
+            int credits = paymentManager.getCredits(userId);
+            updateCreditsDisplay(String.valueOf(credits), "Get more readings");
+        }
     }
 
     /**
@@ -297,6 +324,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 }
             });
 
+
     /**
      * Saves profile image URI to SharedPreferences
      */
@@ -312,5 +340,26 @@ public class UserProfileActivity extends AppCompatActivity {
     private void showErrorAndFinish() {
         Toast.makeText(this, "Error loading profile", Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    private void showPaymentBottomDialog(String userId) {
+        if (userId == null || paymentManager.hasLifetimeAccess(userId)) {
+            return;
+        }
+
+        paymentBottomSheetDialog = new PaymentBottomSheetDialog();
+        paymentBottomSheetDialog.setPaymentDialogListener(new PaymentBottomSheetDialog.PaymentDialogListener() {
+            @Override
+            public void onPaymentDialogDismissed() {
+                setupCreditsCard(userId);
+            }
+
+            @Override
+            public void onPaymentSuccess() {
+                setupCreditsCard(userId);
+            }
+        });
+
+        paymentBottomSheetDialog.show(getSupportFragmentManager(), "payment_dialog");
     }
 }

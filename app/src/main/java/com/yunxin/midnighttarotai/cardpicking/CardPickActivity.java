@@ -18,8 +18,6 @@ import com.yunxin.midnighttarotai.R;
 import com.yunxin.midnighttarotai.result.ResultActivity;
 import com.yunxin.midnighttarotai.settings.SettingsManager;
 import com.yunxin.midnighttarotai.tutorial.TutorialOverlay;
-import com.yunxin.midnighttarotai.utils.BitmapHolder;
-import com.yunxin.midnighttarotai.utils.CardAnimationUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -300,7 +298,7 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
      */
     private void navigateToResult() {
         ArrayList<Bitmap> cardImages = collectCardImages();
-        Intent intent = createResultIntent(cardImages);
+        Intent intent = createResultIntent();
         startActivity(intent);
         finish();
     }
@@ -325,7 +323,7 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
     /**
      * Creates the intent for the result activity
      */
-    private Intent createResultIntent(ArrayList<Bitmap> cardImages) {
+    private Intent createResultIntent() {
         Intent intent = new Intent(this, ResultActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -333,10 +331,6 @@ public class CardPickActivity extends AppCompatActivity implements CardPickView.
         intent.putExtra("question", mQuestion);
         intent.putStringArrayListExtra("cardPicked", (ArrayList<String>) mSelectedCards);
 
-        if (!cardImages.isEmpty()) {
-            BitmapHolder.getInstance().setCardImages(cardImages);
-            intent.putExtra("has_card_images", true);
-        }
 
         return intent;
     }

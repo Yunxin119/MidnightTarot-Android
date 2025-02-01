@@ -45,6 +45,12 @@
             android:name=".tutorial.TutorialOverlay"
             android:exported="false" />
         <activity
+            android:name=".learnspreads.SpreadGridActivity"
+            android:exported="false" />
+        <activity
+            android:name=".learnspreads.SpreadDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".result.ResultActivity"
             android:exported="false" />
         <activity
