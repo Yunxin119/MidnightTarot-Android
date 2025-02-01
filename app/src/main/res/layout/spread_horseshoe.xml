@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/spreadContainer"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintWidth_percent="0.9"
+    app:layout_constraintDimensionRatio="W,1.5:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintVertical_bias="0.5"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Card 3 with background -->
+    <ImageView
+        android:id="@+id/cardbackground3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintDimensionRatio="1:1.5"
+        android:background="@drawable/card_border"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@id/layer2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/card3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintDimensionRatio="1:1.5"
+        app:layout_constraintTop_toTopOf="@id/cardbackground3"
+        app:layout_constraintBottom_toBottomOf="@id/cardbackground3"
+        app:layout_constraintStart_toStartOf="@id/cardbackground3"
+        app:layout_constraintEnd_toEndOf="@id/cardbackground3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layer2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintHeight_percent="0.21"
+        app:layout_constraintTop_toBottomOf="@id/card3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Card 2 with background -->
+        <ImageView
+            android:id="@+id/cardbackground2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            android:background="@drawable/card_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            app:layout_constraintTop_toTopOf="@id/cardbackground2"
+            app:layout_constraintBottom_toBottomOf="@id/cardbackground2"
+            app:layout_constraintStart_toStartOf="@id/cardbackground2"
+            app:layout_constraintEnd_toEndOf="@id/cardbackground2" />
+
+        <!-- Card 4 with background -->
+        <ImageView
+            android:id="@+id/cardbackground4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            android:background="@drawable/card_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            app:layout_constraintTop_toTopOf="@id/cardbackground4"
+            app:layout_constraintBottom_toBottomOf="@id/cardbackground4"
+            app:layout_constraintStart_toStartOf="@id/cardbackground4"
+            app:layout_constraintEnd_toEndOf="@id/cardbackground4" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layer3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintHeight_percent="0.21"
+        app:layout_constraintTop_toBottomOf="@id/layer2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Card 1 with background -->
+        <ImageView
+            android:id="@+id/cardbackground1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            android:background="@drawable/card_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            app:layout_constraintTop_toTopOf="@id/cardbackground1"
+            app:layout_constraintBottom_toBottomOf="@id/cardbackground1"
+            app:layout_constraintStart_toStartOf="@id/cardbackground1"
+            app:layout_constraintEnd_toEndOf="@id/cardbackground1" />
+
+        <!-- Card 5 with background -->
+        <ImageView
+            android:id="@+id/cardbackground5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            android:background="@drawable/card_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/card5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintDimensionRatio="1:1.5"
+            app:layout_constraintTop_toTopOf="@id/cardbackground5"
+            app:layout_constraintBottom_toBottomOf="@id/cardbackground5"
+            app:layout_constraintStart_toStartOf="@id/cardbackground5"
+            app:layout_constraintEnd_toEndOf="@id/cardbackground5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

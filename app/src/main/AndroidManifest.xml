@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- 添加必要的权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,19 @@
         android:theme="@style/Theme.MidnightTarotAI"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".tutorial.TutorialOverlay"
+            android:exported="false" />
+        <activity
+            android:name=".result.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profile.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".question.QuestionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".cardpicking.CardPickActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
