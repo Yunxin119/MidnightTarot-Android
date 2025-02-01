@@ -28,6 +28,7 @@ import com.yunxin.midnighttarotai.home.MainActivity;
 import com.yunxin.midnighttarotai.R;
 import com.yunxin.midnighttarotai.payment.PaymentBottomSheetDialog;
 import com.yunxin.midnighttarotai.payment.PaymentManager;
+import com.yunxin.midnighttarotai.savedreadings.SavedReadingsActivity;
 //import com.yunxin.midnighttarotai.reading.SavedReadingsActivity;
 
 /**
@@ -205,10 +206,10 @@ public class UserProfileActivity extends AppCompatActivity {
      * Sets up saved readings card click listener
      */
     private void setupSavedReadingsCard() {
-//        savedReadingsCard.setOnClickListener(v -> {
-//            Intent savedReadings = new Intent(UserProfileActivity.this, SavedReadingsActivity.class);
-//            startActivity(savedReadings);
-//        });
+        savedReadingsCard.setOnClickListener(v -> {
+            Intent savedReadings = new Intent(UserProfileActivity.this, SavedReadingsActivity.class);
+            startActivity(savedReadings);
+        });
     }
 
     /**

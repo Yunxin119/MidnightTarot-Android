@@ -33,6 +33,21 @@
     <string name="tutorial_got_it">Got it</string>
     <string name="tutorial_skip">Skip Tutorial</string>
 
+    <!-- User Profile Sections -->
+    <string name="text_no_saved_readings">No saved readings yet</string>
+    <string name="title_saved_readings">Saved Readings</string>
+    <string name="error_delete_reading">Failed to delete reading</string>
+    <string name="title_delete_reading">Delete Reading</string>
+    <string name="message_confirm_delete_reading">Are you sure you want to delete this reading?</string>
+    <string name="action_delete">Delete</string>
+    <string name="error_loading_readings">Oops! Something wrong with loading your readings, please try again later.</string>
+    <string name="tab_layout">Layout</string>
+    <string name="tab_reading">Reading</string>
+    <string name="error_loading_reading">Error loading reading</string>
+    <string name="error_authentication_required">Please sign in to view reading</string>
+    <string name="title_reading_detail">Reading Detail</string>
+    <string name="label_your_question">Your Question</string>
+
     <!-- Error Messages -->
     <string name="error_intent_data">Failed to get reading information</string>
     <string name="error_initialization">Unable to start reading</string>
@@ -48,29 +63,12 @@
     <string name="default_question">General guidance</string>
     <string name="default_spread">Timeline</string>
 
-    <!-- Card Position Descriptions -->
-    <string name="position_past">Past Influence</string>
-    <string name="position_present">Present Situation</string>
-    <string name="position_future">Future Outcome</string>
-    <string name="position_above">Above (Conscious)</string>
-    <string name="position_below">Below (Subconscious)</string>
-    <string name="position_advice">Guidance</string>
-    <string name="position_influence">External Influence</string>
-    <string name="position_hopes">Hopes and Fears</string>
-    <string name="position_outcome">Final Outcome</string>
-
     <!-- Accessibility -->
     <string name="accessibility_card_front">Card front showing %1$s</string>
     <string name="accessibility_card_back">Card back</string>
     <string name="accessibility_card_slot">Card position %1$d</string>
     <string name="accessibility_card_select">Select this card</string>
     <string name="accessibility_proceed">Proceed to reading</string>
-
-    <!-- Dialog Messages -->
-    <string name="dialog_exit_title">Exit Reading?</string>
-    <string name="dialog_exit_message">Your progress will be lost</string>
-    <string name="dialog_confirm_cards">Are you satisfied with your selection?</string>
-    <string name="dialog_loading_cards">Preparing your reading…</string>
 
     <!-- Settings -->
     <string name="settings_show_tutorial">Show Tutorial</string>
@@ -97,4 +95,6 @@
     <string name="button_share">Share</string>
     <string name="button_save">Save</string>
     <string name="button_help">Help</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
