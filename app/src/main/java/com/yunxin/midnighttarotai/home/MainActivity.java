@@ -15,9 +15,8 @@ import androidx.fragment.app.FragmentManager;
 import com.yunxin.midnighttarotai.R;
 import com.yunxin.midnighttarotai.home.DailyTarotFragment;
 import com.yunxin.midnighttarotai.home.TarotInquiryFragment;
-//import com.yunxin.midnighttarotai.learnspreads.SpreadGridActivity;
-//import com.yunxin.midnighttarotai.settings.SettingsActivity;
 import com.yunxin.midnighttarotai.auth.LoginActivity;
+import com.yunxin.midnighttarotai.learnspreads.SpreadGridActivity;
 import com.yunxin.midnighttarotai.profile.UserProfileActivity;
 import com.yunxin.midnighttarotai.settings.SettingsActivity;
 
@@ -123,10 +122,10 @@ public class MainActivity extends AppCompatActivity {
         mBtnNavigateRight.setOnClickListener(v -> showNextFragment());
 
         // Configure spreads learning navigation
-//        mBtnSpreads.setOnClickListener(v -> {
-//            Intent spreadIntent = new Intent(MainActivity.this, SpreadGridActivity.class);
-//            startActivity(spreadIntent);
-//        });
+        mBtnSpreads.setOnClickListener(v -> {
+            Intent spreadIntent = new Intent(MainActivity.this, SpreadGridActivity.class);
+            startActivity(spreadIntent);
+        });
     }
 
     /**

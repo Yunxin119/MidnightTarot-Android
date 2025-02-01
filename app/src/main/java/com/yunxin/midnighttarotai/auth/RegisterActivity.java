@@ -16,7 +16,7 @@ import com.google.firebase.database.Logger;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.yunxin.midnighttarotai.home.MainActivity;
 import com.yunxin.midnighttarotai.R;
-//import com.yunxin.midnighttarotai.payment.LocalPaymentManager;
+import com.yunxin.midnighttarotai.payment.PaymentManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     // Utility Components
     private EmailVerificationHandler verificationHandler;
-//    private LocalPaymentManager paymentManager;
+    private PaymentManager paymentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Enable Firebase debug logging
-        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
+//        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
 
         initializeComponents();
         setupVerificationHandler();
@@ -292,6 +292,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     Log.d(TAG, "User data saved to Firestore successfully");
                     hideLoadingDialog();
+                    initializeUserPayment(user.getUid());
                     navigateToLogin();
                 })
                 .addOnFailureListener(e -> {
@@ -306,10 +307,10 @@ public class RegisterActivity extends AppCompatActivity {
     /**
      * Initializes payment settings for new user
      */
-//    private void initializeUserPayment(String userId) {
-//        paymentManager = new LocalPaymentManager(this);
-//        paymentManager.initializeNewUser(userId);
-//    }
+    private void initializeUserPayment(String userId) {
+        paymentManager = new PaymentManager(this);
+        paymentManager.initializeNewUser(userId);
+    }
 
     /**
      * Navigates to login screen after successful registration
