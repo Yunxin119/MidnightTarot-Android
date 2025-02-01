@@ -32,9 +32,6 @@ import com.yunxin.midnighttarotai.R;
  * UserProfile activity handles user profile management and display
  * Allows users to view and edit their profile information, manage credits,
  * and access saved readings
- *
- * @author YunXin
- * @version 2.0
  */
 public class UserProfileActivity extends AppCompatActivity {
     private static final String TAG = "UserProfile";

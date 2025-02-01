@@ -8,9 +8,6 @@ import com.google.firebase.auth.FirebaseUser;
  * Handles email verification functionality for user registration
  * This class manages sending verification emails and checking verification status
  * through Firebase Authentication
- *
- * @author Yunxin
- * @version 2.0
  */
 public class EmailVerificationHandler {
     private static final String TAG = "EmailVerificationHandler";

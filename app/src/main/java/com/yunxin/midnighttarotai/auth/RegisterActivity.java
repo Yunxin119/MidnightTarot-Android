@@ -34,9 +34,6 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 /**
  * RegisterActivity handles new user registration and email verification
  * This activity manages user registration through Firebase Authentication and stores user data in Firestore
- *
- * @author Yunxin
- * @version 2.0
  */
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";

@@ -18,9 +18,6 @@ import com.yunxin.midnighttarotai.R;
 /**
  * ForgetPasswordActivity handles password reset functionality
  * This activity allows users to request a password reset email through Firebase Authentication
- *
- * @author YunXin
- * @version 2.0
  */
 public class ForgetPasswordActivity extends AppCompatActivity {
 

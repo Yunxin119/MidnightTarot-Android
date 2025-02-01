@@ -19,6 +19,7 @@ import com.yunxin.midnighttarotai.home.TarotInquiryFragment;
 //import com.yunxin.midnighttarotai.settings.SettingsActivity;
 import com.yunxin.midnighttarotai.auth.LoginActivity;
 import com.yunxin.midnighttarotai.profile.UserProfileActivity;
+import com.yunxin.midnighttarotai.settings.SettingsActivity;
 
 import java.util.ArrayList;
 
@@ -112,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Configure settings navigation
-//        mBtnSettings.setOnClickListener(v -> {
-//            Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
-//            startActivity(settingsIntent);
-//        });
+        mBtnSettings.setOnClickListener(v -> {
+            Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        });
 
         // Configure fragment navigation
         mBtnNavigateLeft.setOnClickListener(v -> showPreviousFragment());

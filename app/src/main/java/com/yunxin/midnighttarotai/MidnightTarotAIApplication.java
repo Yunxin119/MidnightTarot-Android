@@ -8,7 +8,7 @@ import android.util.Log;
  * Custom Application class for MidnightTarot
  * Handles application-level initialization
  *
- * @author YunXin
+ * @author Yunxin
  * @version 2.0
  */
 public class MidnightTarotAIApplication extends Application {

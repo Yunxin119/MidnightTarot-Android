@@ -21,9 +21,6 @@ import com.yunxin.midnighttarotai.R;
 /**
  * ChangePasswordActivity handles user password changes
  * This activity allows users to update their password after re-authentication
- *
- * @author YunXin
- * @version 2.0
  */
 public class ChangePasswordActivity extends AppCompatActivity {
     private static final String TAG = "ChangePasswordActivity";
