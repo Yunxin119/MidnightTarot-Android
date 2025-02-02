@@ -30,17 +30,14 @@ import com.yunxin.midnighttarotai.payment.PaymentManager;
 import com.yunxin.midnighttarotai.savedreadings.FirebaseReadingManager;
 import com.yunxin.midnighttarotai.savedreadings.Reading;
 import com.yunxin.midnighttarotai.savedreadings.SavedCard;
+import com.yunxin.midnighttarotai.share.SharePreviewDialog;
 import com.yunxin.midnighttarotai.utils.CardImageLoaderUtils;
-//import com.yunxin.midnighttarotai.reading.FirebaseReadingManager;
-//import com.yunxin.midnighttarotai.reading.Reading;
-//import com.yunxin.midnighttarotai.reading.ReadingUtils;
-//import com.yunxin.midnighttarotai.reading.SavedCard;
 import com.yunxin.midnighttarotai.settings.SettingsManager;
 import com.yunxin.midnighttarotai.utils.FadeEdgeImageView;
 import com.yunxin.midnighttarotai.utils.OpenAIHelper;
 import com.yunxin.midnighttarotai.utils.ResultAnimationUtils;
 import com.yunxin.midnighttarotai.utils.SaveReadingUtils;
-//import com.yunxin.midnighttarotai.utils.ShareImageGenerator;
+import com.yunxin.midnighttarotai.share.ShareImageGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -265,7 +262,7 @@ public class ResultActivity extends AppCompatActivity {
         selectedCards = intent.getStringArrayListExtra("cardPicked");
 
         if (selectedCards != null) {
-            cardImages = new ArrayList<>();
+            cardImages = new ArrayList<Bitmap>();
             Log.d(TAG, "Loading card images");
             for (String card : selectedCards) {
                 String cardInfo = card.split(":")[1].trim();
@@ -419,22 +416,22 @@ public class ResultActivity extends AppCompatActivity {
      * Handles the "Share" button click, generating and sharing an image of the reading.
      */
     private void handleShareClick() {
-//        if (!validateSharePrerequisites()) return;
-//
-//        try {
-//            ShareImageGenerator generator = new ShareImageGenerator(
-//                    this, spreadType, userQuestion, cardImages);
-//
-//            Bitmap shareBitmap = generator.createShareImage(containerContent);
-//            if (shareBitmap != null) {
-//                showShareDialog(shareBitmap);
-//            } else {
-//                showToast("Failed to create share image");
-//            }
-//        } catch (Exception e) {
-//            Log.e(TAG, "Error creating share image", e);
-//            showToast("Failed to create share image: " + e.getMessage());
-//        }
+        if (!validateSharePrerequisites()) return;
+
+        try {
+            ShareImageGenerator generator = new ShareImageGenerator(
+                    this, spreadType, userQuestion, (ArrayList<Bitmap>) cardImages);
+
+            Bitmap shareBitmap = generator.createShareImage(containerContent);
+            if (shareBitmap != null) {
+                showShareDialog(shareBitmap);
+            } else {
+                showToast("Failed to create share image");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error creating share image", e);
+            showToast("Failed to create share image: " + e.getMessage());
+        }
     }
 
     /**
@@ -443,19 +440,18 @@ public class ResultActivity extends AppCompatActivity {
      * @return Whether the prerequisites are met.
      */
     private boolean validateSharePrerequisites() {
-//        if (cardImages == null || cardImages.isEmpty()) {
-//            Log.e(TAG, "No card images available");
-//            showToast("No card images available");
-//            return false;
-//        }
-//
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if (currentUser == null) {
-//            showToast("Please sign in to share");
-//            return false;
-//        }
-//
-//        return true;
+        if (cardImages == null || cardImages.isEmpty()) {
+            Log.e(TAG, "No card images available");
+            showToast("No card images available");
+            return false;
+        }
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null) {
+            showToast("Please sign in to share");
+            return false;
+        }
+
         return true;
     }
 
@@ -465,15 +461,15 @@ public class ResultActivity extends AppCompatActivity {
      * @param shareBitmap The bitmap of the reading image to share.
      */
     private void showShareDialog(Bitmap shareBitmap) {
-//        SharePreviewDialog dialog = SharePreviewDialog.newInstance(shareBitmap);
-//        dialog.setDailyReadingManager(dailyReadingManager);
-//
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if (dailyReadingManager.canEarnShareCredit(currentUser.getUid())) {
-//            showToast("Share to earn 1 credit!");
-//        }
-//
-//        dialog.show(getSupportFragmentManager(), "share_preview");
+        SharePreviewDialog dialog = SharePreviewDialog.newInstance(shareBitmap);
+        dialog.setDailyReadingManager(dailyReadingManager);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (dailyReadingManager.canEarnShareCredit(currentUser.getUid())) {
+            showToast("Share to earn 1 credit!");
+        }
+
+        dialog.show(getSupportFragmentManager(), "share_preview");
     }
 
 

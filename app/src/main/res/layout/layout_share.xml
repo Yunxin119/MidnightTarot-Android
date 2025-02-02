@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_main"
+    android:layout_width="410dp"
+    android:layout_height="820dp">
+
+    <ImageView
+        android:layout_width="550dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/decoration_magic_circle_share"
+        android:elevation="-10dp"
+        android:alpha="0.3"
+        app:tint="@color/primary" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/spreadContainer"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/text_size_large"
+        android:fontFamily="@font/lora"
+        android:text="Give me suggestion of how to solve the problem."
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:breakStrategy="high_quality"
+        android:lineSpacingMultiplier="1.2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/spreadContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintDimensionRatio="W,1.5:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/bottomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/text_size_medium"
+        android:textColor="@color/text_secondary"
+        android:text="The Horseshoe - Ask Tarot AI" />
+
+    <!--    TODO: Downloading App QR Code on the right -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
