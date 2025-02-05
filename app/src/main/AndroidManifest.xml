@@ -20,6 +20,8 @@
         </intent>
     </queries>
 
+
+
     <application
         android:name=".MidnightTarotAIApplication"
         android:allowBackup="true"
@@ -29,61 +31,86 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MidnightTarotAI"
         tools:targetApi="31">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".savedreadings.SavedReadingDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".savedreadings.SavedReadingsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".settings.SettingsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".auth.ChangePasswordActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".auth.RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".auth.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".tutorial.TutorialOverlay"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".learnspreads.SpreadGridActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".learnspreads.SpreadDetailActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".result.ResultActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".profile.UserProfileActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".question.QuestionActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".home.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".auth.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".cardpicking.CardPickActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>
+
+
 
 </manifest>

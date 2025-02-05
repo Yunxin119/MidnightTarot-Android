@@ -11,4 +11,18 @@
     <dimen name="text_size_large">22sp</dimen>
     <dimen name="text_size_xlarge">28sp</dimen>
     <dimen name="text_size_xxlarge">33sp</dimen>
+
+    <!-- Portrait mode -->
+    <item name="spread_container_width_ratio" format="float" type="dimen">0.6</item>
+    <item name="pick_container_width_ratio" format="float" type="dimen">0.4</item>
+
+    <!-- Landscape mode -->
+    <item name="spread_container_width_ratio_land" format="float" type="dimen">0.5</item>
+    <item name="pick_container_width_ratio_land" format="float" type="dimen">0.5</item>
+
+    <!-- Common dimensions -->
+    <dimen name="analyze_button_size">200dp</dimen>
+    <dimen name="analyze_button_text_size">30sp</dimen>
+    <dimen name="button_padding">16dp</dimen>
+    <dimen name="card_pick_vertical_margin">16dp</dimen>
 </resources>

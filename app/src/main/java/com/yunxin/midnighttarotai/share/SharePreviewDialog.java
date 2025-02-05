@@ -150,41 +150,55 @@ public class SharePreviewDialog extends BottomSheetDialogFragment {
     public void shareImage() {
         if (previewImage == null || dailyReadingManager == null) return;
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userId = currentUser.getUid();
         if (currentUser == null) return;
+        String userId = currentUser.getUid();
+
         try {
+            // 1. 创建缓存目录
             File cachePath = new File(requireContext().getCacheDir(), "shares");
             cachePath.mkdirs();
-            File imageFile = new File(cachePath, "midnight_tarot_ai_share.jpg");
-            FileOutputStream stream = new FileOutputStream(imageFile);
-            previewBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            stream.close();
 
+            // 2. 创建图片文件
+            File imageFile = new File(cachePath, "midnight_tarot_ai_share.jpg");
+            try (FileOutputStream stream = new FileOutputStream(imageFile)) {
+                previewBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            }
+
+            // 3. 获取 URI
             Uri contentUri = FileProvider.getUriForFile(
                     requireContext(),
                     requireContext().getPackageName() + ".fileprovider",
                     imageFile
             );
 
+            // 4. 创建分享 Intent
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("image/*");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-            shareIntent.putExtra(Intent.EXTRA_TEXT,
-                    ((ResultActivity)requireActivity()).buildShareText());
 
+            // 添加分享文本
+            String shareText = ((ResultActivity)requireActivity()).buildShareText();
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+
+            // 5. 检查是否能获得分享积分
             boolean canEarnShareCredit = dailyReadingManager.canEarnShareCredit(userId);
-            startActivity(Intent.createChooser(shareIntent, "Share your reading"));
+
+            // 6. 启动分享
+            Intent chooserIntent = Intent.createChooser(shareIntent, "Share your reading");
+            startActivity(chooserIntent);
+
+            // 7. 处理积分奖励
             if (canEarnShareCredit) {
                 paymentManager.addCredits(userId, 1);
                 Toast.makeText(requireContext(),
                         "You earned 1 credit for sharing! You can earn another credit tomorrow.",
                         Toast.LENGTH_LONG).show();
             }
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         } catch (Exception e) {
-            Log.e("SharePreviewDialog", e.toString());
+            e.printStackTrace();  // 添加详细日志
+            Log.e("SharePreviewDialog", "Share failed: " + e.getMessage());
             Toast.makeText(getContext(), "Failed to share image", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

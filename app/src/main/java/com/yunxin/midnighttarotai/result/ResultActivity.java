@@ -15,6 +15,11 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -112,6 +117,57 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     /**
+     * Gets the screen aspect ratio and sets the appropriate width for the content container
+     */
+    private void adjustContentContainerWidth() {
+        // Get screen dimensions
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        float screenWidth = displayMetrics.widthPixels;
+        float screenHeight = displayMetrics.heightPixels;
+        float aspectRatio = screenWidth / screenHeight;
+
+        // Determine the appropriate width percent based on aspect ratio
+        float widthPercent;
+        float heightPercent;
+        float imageScale;
+        if (aspectRatio > 3f/5f) {
+            widthPercent = 0.45f;
+            heightPercent = 0.45f;
+            imageScale = 1.2f;
+        } else if (aspectRatio > 1f/2f) {
+            widthPercent = 0.5f;
+            heightPercent = 0.5f;
+            imageScale = 1.2f;
+        } else if (aspectRatio > 1f/3f) {
+            widthPercent = 0.7f;
+            heightPercent = 0.5f;
+            imageScale = 1f;
+        } else {
+            widthPercent = 0.8f;
+            heightPercent = 0.55f;
+            imageScale = 0.95f;
+        }
+
+        // Get the ConstraintLayout.LayoutParams
+        ConstraintLayout.LayoutParams params =
+                (ConstraintLayout.LayoutParams) containerContent.getLayoutParams();
+
+        // Update the width percent
+        params.matchConstraintPercentWidth = widthPercent;
+        params.matchConstraintPercentHeight = heightPercent;
+
+        // Apply the updated layout params
+        containerContent.setLayoutParams(params);
+
+        // Set background image scale
+        ImageView backgroundImage = findViewById(R.id.backgroundImage);
+        backgroundImage.setScaleX(imageScale);
+        backgroundImage.setScaleY(imageScale);
+    }
+
+    /**
      * Initializes UI components from the layout.
      */
     private void initializeViews() {
@@ -137,6 +193,7 @@ public class ResultActivity extends AppCompatActivity {
 
         // Setup text scrolling
         txtReadingContent.setMovementMethod(new ScrollingMovementMethod());
+        adjustContentContainerWidth();
     }
 
     /**

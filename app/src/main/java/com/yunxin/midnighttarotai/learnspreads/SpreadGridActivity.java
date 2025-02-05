@@ -31,20 +31,22 @@ public class SpreadGridActivity extends AppCompatActivity {
         spreads = SpreadRepository.getInstance().getSpreads();
 
         spreadsRecyclerView = findViewById(R.id.spreadsRecyclerView);
-        spreadsRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        int col = getSpanCountBasedOnScreenWidth();
+        spreadsRecyclerView.setLayoutManager(new GridLayoutManager(this, col));
 
         int spacing = (int) getResources().getDimension(R.dimen.grid_spacing);
+
         spreadsRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
                                        @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
                 int position = parent.getChildAdapterPosition(view);
-                int column = position % 2;
+                int column = position % col;
 
-                outRect.left = spacing - column * spacing / 2;
-                outRect.right = (column + 1) * spacing / 2;
+                outRect.left = spacing - column * spacing / col;
+                outRect.right = (column + 1) * spacing / col;
 
-                if (position < 2) {
+                if (position < col) {
                     outRect.top = spacing;
                 }
                 outRect.bottom = spacing;
@@ -68,7 +70,15 @@ public class SpreadGridActivity extends AppCompatActivity {
         spreadsRecyclerView.setAdapter(adapter);
     }
 
+    private int getSpanCountBasedOnScreenWidth() {
+        int screenWidthDp = getResources().getConfiguration().screenWidthDp;
 
+        if (screenWidthDp >= 600) {
+            return 3;
+        } else {
+            return 2;
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

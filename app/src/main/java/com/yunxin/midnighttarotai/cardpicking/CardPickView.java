@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,7 +30,7 @@ public class CardPickView extends View {
     private static final float DEFAULT_FAN_RADIUS = 1400f;
     private static final float DEFAULT_MAX_ROTATION = 3.0f;
     private static final float DEFAULT_MAX_ELEVATION = 20.0f;
-    private static final float DEFAULT_HOVER_SCALE = 1.1f;
+    private float DEFAULT_HOVER_SCALE = 1.1f;
 
     // Card Management
     private List<Card> mCardList;
@@ -114,8 +115,21 @@ public class CardPickView extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        Log.d("DIMENTIONS", String.valueOf(w) + "," + String.valueOf(h));
+        float ratio = (float)(w/h);
+        float lift;
+        if (ratio < 1) {
+            lift = 0.55f;
+            DEFAULT_HOVER_SCALE = 1f;
+        } else if (ratio < 1.5) {
+            lift = 0.65f;
+            DEFAULT_HOVER_SCALE = 1.1f;
+        } else {
+            lift = 0.75f;
+            DEFAULT_HOVER_SCALE = 1f;
+        }
         mCenterX = w / 2f;
-        mCenterY = h + mFanRadius * 0.65f;
+        mCenterY = h + mFanRadius * lift;
     }
 
     @Override

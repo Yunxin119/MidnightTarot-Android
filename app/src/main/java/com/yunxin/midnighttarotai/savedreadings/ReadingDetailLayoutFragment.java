@@ -74,11 +74,20 @@ public class ReadingDetailLayoutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_reading_detail_layout, container, false);
 
+        ViewGroup spreadContainer = rootView.findViewById(R.id.spreadContainer);
+
         int spreadLayoutResId = SpreadUtils.getLayoutResourceId(spreadType);
-        View spreadLayout = inflater.inflate(spreadLayoutResId, (ViewGroup) rootView, false);
-        ((ViewGroup) rootView).addView(spreadLayout);
+        View spreadLayout = inflater.inflate(spreadLayoutResId, spreadContainer, true);
+
+        if (spreadLayout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) spreadLayout.getLayoutParams();
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            spreadLayout.setLayoutParams(params);
+        }
 
         displayCards(spreadLayout);
+
         return rootView;
     }
 

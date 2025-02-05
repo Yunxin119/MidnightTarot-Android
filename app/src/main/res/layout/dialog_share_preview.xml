@@ -38,6 +38,7 @@
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:background="@drawable/button_glow_effect"
+            android:textColor="@color/text_primary"
             app:cornerRadius="8dp"
             android:text="Save"/>
 
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_glow_effect"
+            android:textColor="@color/text_primary"
             app:cornerRadius="8dp"
             android:text="Share"/>
     </LinearLayout>
